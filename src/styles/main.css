@@ -5,14 +5,15 @@ body{
     align-items: center;
     min-height: 100vh;
     background: #24004d;
+    user-select: none;
 }
 
 .container{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
     gap: 30px;
     background: linear-gradient(325deg, #730187, #2c0050);
     padding: 40px 60px;
@@ -31,7 +32,7 @@ h2{
     width: 100%;
     color: #000;
     background: #fff;
-    border:none;
+    border: none;
     font-size: 1.5em;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -56,9 +57,9 @@ h2{
 }
 
 .item{
+    position: relative;
     width: 100px;
     height: 100px;
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,15 +74,27 @@ h2{
 .item::after{
     content: " ";
     position: absolute;
-    width: 100%;
     inset: 0;
     transform: rotateY(10deg);
     transition: 0.25s;
     background: #322a35;
     -moz-transform: rotateY(0deg); /* Mozilla specific */
     -moz-transition: 0.25s; /* Mozilla specific */
-    /* -moz-backface-visibility: hidden; Mozilla specific */
-    /* backface-visibility: hidden; */
+    /* -moz-backface-visibility: hidden;
+    backface-visibility: hidden; */
     
+    /* opacity: 0.85; */
 }
 
+.item.cardOpen{
+    transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg); /* Mozilla specific */
+    /* backface-visibility:visible; */
+}
+
+.cardOpen::after,
+.cardMatch::after{
+    transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg); /* Mozilla specific */
+    background: transparent;
+}
